@@ -11,28 +11,26 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "role")
+@Table(name = "Role")
 public class Role {
 	@Id
-	@Column(name = "Id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@Column(name = "name")
+	private int id;
 	private String name;
 	@OneToMany(mappedBy = "role")
 	private Set<UserRole> roleUsers;
     public Role() {
         
     }
-    public Role(Long id, String name, Set<UserRole> roleUsers) {
+    public Role(int id, String name, Set<UserRole> roleUsers) {
         this.id = id;
         this.name = name;
         this.roleUsers = roleUsers;
     }
-    public Long getId() {
+    public int getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getName() {

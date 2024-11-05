@@ -2,7 +2,6 @@ package fashion.models.admin;
 
 import java.util.Set;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -12,50 +11,39 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users")
+@Table(name = "User")
 public class User {
     @Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@Column(name = "username")
+	private int id;
 	private String userName;
-	@Column(name = "password")
-	private String passWord;
-	@Column(name = "enabled")
+	private String password;
 	private Boolean enabled;
-	@Column(name = "fullname")
-	private String fullName;
-	@Column(name = "gender")
 	private Boolean gender;
-	@Column(name = "address")
 	private String address;
-	@Column(name = "email")
 	private String email;
-	@Column(name = "telephone")
 	private String telephone;
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private Set<UserRole> userRoles;
     public User() {
 
     }
-    public User(Long id, String userName, String passWord, Boolean enabled, String fullName, Boolean gender,
-            String address, String email, String telephone, Set<UserRole> userRoles) {
+    public User(int id, String userName, String password, Boolean enabled, Boolean gender, String address,
+            String email, String telephone, Set<UserRole> userRoles) {
         this.id = id;
         this.userName = userName;
-        this.passWord = passWord;
+        this.password = password;
         this.enabled = enabled;
-        this.fullName = fullName;
         this.gender = gender;
         this.address = address;
         this.email = email;
         this.telephone = telephone;
         this.userRoles = userRoles;
     }
-    public Long getId() {
+    public int getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getUserName() {
@@ -64,23 +52,17 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
     public Boolean getEnabled() {
         return enabled;
     }
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
-    }
-    public String getFullName() {
-        return fullName;
-    }
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
     }
     public Boolean getGender() {
         return gender;

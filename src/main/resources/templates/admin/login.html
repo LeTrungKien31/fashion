@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Log in</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/font-awesome.min.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/AdminLTE.css}">
+  
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<script data-cfasync="false" nonce="e1cccf79-1bd9-4516-9a93-105d8c139645">try{(function(w,d){!function(cJ,cK,cL,cM){if(cJ.zaraz)console.error("zaraz is loaded twice");else{cJ[cL]=cJ[cL]||{};cJ[cL].executed=[];cJ.zaraz={deferred:[],listeners:[]};cJ.zaraz._v="5815";cJ.zaraz._n="e1cccf79-1bd9-4516-9a93-105d8c139645";cJ.zaraz.q=[];cJ.zaraz._f=function(cN){return async function(){var cO=Array.prototype.slice.call(arguments);cJ.zaraz.q.push({m:cN,a:cO})}};for(const cP of["track","set","debug"])cJ.zaraz[cP]=cJ.zaraz._f(cP);cJ.zaraz.init=()=>{var cQ=cK.getElementsByTagName(cM)[0],cR=cK.createElement(cM),cS=cK.getElementsByTagName("title")[0];cS&&(cJ[cL].t=cK.getElementsByTagName("title")[0].text);cJ[cL].x=Math.random();cJ[cL].w=cJ.screen.width;cJ[cL].h=cJ.screen.height;cJ[cL].j=cJ.innerHeight;cJ[cL].e=cJ.innerWidth;cJ[cL].l=cJ.location.href;cJ[cL].r=cK.referrer;cJ[cL].k=cJ.screen.colorDepth;cJ[cL].n=cK.characterSet;cJ[cL].o=(new Date).getTimezoneOffset();if(cJ.dataLayer)for(const cT of Object.entries(Object.entries(dataLayer).reduce(((cU,cV)=>({...cU[1],...cV[1]})),{})))zaraz.set(cT[0],cT[1],{scope:"page"});cJ[cL].q=[];for(;cJ.zaraz.q.length;){const cW=cJ.zaraz.q.shift();cJ[cL].q.push(cW)}cR.defer=!0;for(const cX of[localStorage,sessionStorage])Object.keys(cX||{}).filter((cZ=>cZ.startsWith("_zaraz_"))).forEach((cY=>{try{cJ[cL]["z_"+cY.slice(7)]=JSON.parse(cX.getItem(cY))}catch{cJ[cL]["z_"+cY.slice(7)]=cX.getItem(cY)}}));cR.referrerPolicy="origin";cR.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(cJ[cL])));cQ.parentNode.insertBefore(cR,cQ)};["complete","interactive"].includes(cK.readyState)?zaraz.init():cJ.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async bb=>new Promise((bc=>{if(bb){bb.e&&bb.e.forEach((bd=>{try{const be=d.querySelector("script[nonce]"),bf=be?.nonce||be?.getAttribute("nonce"),bg=d.createElement("script");bf&&(bg.nonce=bf);bg.innerHTML=bd;bg.onload=()=>{d.head.removeChild(bg)};d.head.appendChild(bg)}catch(bh){console.error(`Error executing script: ${bd}\n`,bh)}}));Promise.allSettled((bb.f||[]).map((bi=>fetch(bi[0],bi[1]))))}bc()}));zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/cdn-cgi/zaraz/t"),e;};</script></head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index2.html"><b>Admin</b>LTE</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+    
+    <form th:action="@{/login}" method="post">
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="UserName" name="username">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password" name="password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    
+    <!-- /.social-auth-links -->
+
+    <a href="#">I forgot my password</a><br>
+    <a href="register.html" class="text-center">Register a new membership</a>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>
+</body>
+</html>

@@ -11,7 +11,7 @@ public class AdminController {
     public String index() {
         return "redirect:/admin/";
     }
-    @RequestMapping("/")
+    @GetMapping("/")
     public  String admin() {
         return "admin/index";
     }

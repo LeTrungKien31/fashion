@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("admin/category")
 public class CategoryController {
     @RequestMapping("admin/category")
     public String index() {
@@ -14,5 +13,4 @@ public class CategoryController {
     public String add() {
         return "admin/category/add";
     }
-
 }

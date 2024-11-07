@@ -10,7 +10,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users_roles")
 public class UserRole {
     @Id
     @Column(name = "id")

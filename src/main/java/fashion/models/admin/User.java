@@ -10,7 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 
 @Entity
 public class User {
@@ -26,7 +25,7 @@ public class User {
 	private String telephone;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<UserRole> userRoles;
+	private Set<UserRole> userRole;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Invoice> invoice;
@@ -48,7 +47,7 @@ public class User {
         this.address = address;
         this.email = email;
         this.telephone = telephone;
-        this.userRoles = userRoles;
+        this.userRole = userRoles;
     }
     public int getId() {
         return id;
@@ -99,10 +98,10 @@ public class User {
         this.telephone = telephone;
     }
     public Set<UserRole> getUserRoles() {
-        return userRoles;
+        return userRole;
     }
     public void setUserRoles(Set<UserRole> userRoles) {
-        this.userRoles = userRoles;
+        this.userRole = userRoles;
     }
     
 	

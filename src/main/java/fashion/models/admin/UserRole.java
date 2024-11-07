@@ -7,33 +7,33 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 @Entity
 public class UserRole {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @ManyToOne
 	@JoinColumn(name = "userId",referencedColumnName = "id")
 	private User user;
 	@ManyToOne
 	@JoinColumn(name = "roleId",referencedColumnName = "id")
 	private Role role;
+    
     public UserRole() {
 
     }
-    public UserRole(Long id, User user, Role role) {
+    public UserRole(int id, User user, Role role) {
         super();
         this.id = id;
         this.user = user;
         this.role = role;
     }
-    public Long getId() {
+    public int getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public User getUser() {

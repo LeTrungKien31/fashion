@@ -7,7 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 
 @Entity
 public class Role {
@@ -16,14 +15,14 @@ public class Role {
 	private int id;
 	private String name;
 	@OneToMany(mappedBy = "role")
-	private Set<UserRole> roleUsers;
+	private Set<UserRole> roleUser;
     public Role() {
         
     }
     public Role(int id, String name, Set<UserRole> roleUsers) {
         this.id = id;
         this.name = name;
-        this.roleUsers = roleUsers;
+        this.roleUser = roleUsers;
     }
     public int getId() {
         return id;
@@ -38,10 +37,10 @@ public class Role {
         this.name = name;
     }
     public Set<UserRole> getRoleUsers() {
-        return roleUsers;
+        return roleUser;
     }
     public void setRoleUsers(Set<UserRole> roleUsers) {
-        this.roleUsers = roleUsers;
+        this.roleUser = roleUsers;
     }
     
 }

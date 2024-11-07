@@ -19,7 +19,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(columnDefinition = "NVARCHAR(MAX)")
+    @Column(columnDefinition = "NVARCHAR(3000)")
     private String description;
     private String imageUrl;
     private String productName;

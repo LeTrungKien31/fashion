@@ -22,25 +22,31 @@ public class SecurityConfig {
     }
     @Bean 
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests((auth) -> auth
-                .requestMatchers("/*").permitAll()
-                .requestMatchers("/admin/**").hasAuthority("ADMIN")
-                .anyRequest().authenticated()
-            )
-            .formLogin(login -> login
-                .loginPage("/login")
-                .loginProcessingUrl("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/admin", true)
-            )
-            .logout(logout -> logout
-            .logoutUrl("/admin-logout")
-            .logoutSuccessUrl("/login"))
-            .logout(logout ->logout
-            .logoutUrl("/admin-logout")
-            .logoutSuccessUrl("/login"));
+        // http.csrf(csrf -> csrf.disable())
+        //     .authorizeHttpRequests((auth) -> auth
+        //         .requestMatchers("/*").permitAll()
+        //         .requestMatchers("/admin/**").hasAuthority("ADMIN")
+        //         .anyRequest().authenticated()
+        //     )
+        //     .formLogin(login -> login
+        //         .loginPage("/login")
+        //         .loginProcessingUrl("/login")
+        //         .usernameParameter("username")
+        //         .passwordParameter("password")
+        //         .defaultSuccessUrl("/admin", true)
+        //     )
+        //     .logout(logout -> logout
+        //     .logoutUrl("/admin-logout")
+        //     .logoutSuccessUrl("/login"))
+        //     .logout(logout ->logout
+        //     .logoutUrl("/admin-logout")
+        //     .logoutSuccessUrl("/login"));
+
+        http
+            .csrf(csrf -> csrf.disable()) // Tắt CSRF nếu không cần
+            .authorizeHttpRequests(auth -> auth
+                .anyRequest().permitAll() // Cho phép tất cả các yêu cầu mà không cần xác thực
+            );
     
         return http.build();
     }

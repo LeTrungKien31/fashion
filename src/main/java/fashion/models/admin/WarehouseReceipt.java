@@ -40,6 +40,7 @@ public class WarehouseReceipt {
     @PrePersist
     protected void onCreate() {
         createdAt = Instant.now();
+        updatedAt = Instant.now();
     }
 
     // Cập nhật ngày hiện tại khi sửa bản ghi

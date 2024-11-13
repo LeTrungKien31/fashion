@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head th:replace="admin/fragments/head :: head"></head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <div th:replace="admin/fragments/header :: header"></div>
+
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Chào mừng đến trang quản lý phiếu nhập kho
+
+            </h1>
+
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <a href="receipt/add" class="btn btn-success">+Thêm mới</a>
+
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                <th>Id</th>
+                                <th>Nhà sản xuất</th>
+                                <th>Tổng số lượng</th>
+                                <th>Tổng giá</th>
+                                <th>ngày tạo</th>
+                                <th>Người tạo</th>
+                                <th>Ngày sửa</th>
+                                <th>Người sửa</th>
+                                <th>Tùy chọn</th>
+                            </tr>
+                            <tr th:each = "receipt : ${list}">
+                                <td th:text="${receipt.id}"></td>
+                                <td th:text="${receipt.supplier.supplierName}"></td>
+                                <td th:text="${receipt.totalAmount}"></td>
+                                <td th:text="${receipt.totalPrice}"></td>
+                                <td th:text="${receipt.createdAt}"></td>
+                                <td th:text="${receipt.createdBy}"></td>
+                                <td th:text="${receipt.updatedAt}"></td>
+                                <td th:text="${receipt.updatedBy}"></td>
+                                <td>
+                                    <a th:href="@{/admin/receipt/edit/{id}(id = ${receipt.id})}" class="btn btn-success">Sửa</a>
+                                    <a th:href="@{/admin/receipt/delete/{id}(id = ${receipt.id})}" class="btn btn-danger">Xóa</a>
+
+                                </td>
+                            </tr>
+                            </tbody></table>
+                        </div>
+                </div>
+            </div>
+        </section>
+    </div>
+   
+
+
+</div>
+<div th:replace="admin/fragments/script :: script"></div>
+
+</body>
+</html>

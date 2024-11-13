@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 
 @Entity
 public class CartDetails {
@@ -32,7 +34,16 @@ public class CartDetails {
     public CartDetails(){
         
     }
+    @PrePersist
+    protected void onCreate() {
+        createdAt = Instant.now();
+    }
 
+    // Cập nhật ngày hiện tại khi sửa bản ghi
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = Instant.now();
+    }
     public CartDetails(int id, int quantity, double price, Instant createdAt, String createdBy, Instant updatedAt,
             String updatedBy, Cart cart, Product product) {
         this.id = id;

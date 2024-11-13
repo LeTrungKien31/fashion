@@ -10,7 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 
 @Entity
 public class Supplier {
@@ -32,7 +33,16 @@ public class Supplier {
     public Supplier(){
 
     }
+    @PrePersist
+    protected void onCreate() {
+        createdAt = Instant.now();
+    }
 
+    // Cập nhật ngày hiện tại khi sửa bản ghi
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = Instant.now();
+    }
     public Supplier(int id, String supplierName, String address, String phoneNumber, String email, Instant createdAt,
             String createdBy, Instant updatedAt, String updatedBy, Set<WarehouseReceipt> warehouseReceipt) {
         this.id = id;

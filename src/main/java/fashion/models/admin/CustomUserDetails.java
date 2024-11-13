@@ -11,7 +11,7 @@ public class CustomUserDetails implements UserDetails {
     public CustomUserDetails() {
         
     }
-
+    
     public CustomUserDetails(User user, Collection<? extends GrantedAuthority> authorities) {
         this.user = user;
         this.authorities = authorities;

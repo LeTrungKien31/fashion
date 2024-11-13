@@ -13,13 +13,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 
 @Entity
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(columnDefinition = "NVARCHAR(3000)")
+    @Column(columnDefinition = "MEDIUMTEXT")
     private String description;
     private String imageUrl;
     private String productName;
@@ -46,7 +48,16 @@ public class Product {
     public Product(){
 
     }
+    @PrePersist
+    protected void onCreate() {
+        createdAt = Instant.now();
+    }
 
+    // Cập nhật ngày hiện tại khi sửa bản ghi
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = Instant.now();
+    }
     public Product(int id, String description, String imageUrl, String productName, double price, int quantity,
             Instant createdAt, String createdBy, Instant updatedAt, String updatedBy,
             Set<ReceiptDetails> receiptDetails, Category category, Set<InvoiceDetails> invoiceDetails,

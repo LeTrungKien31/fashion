@@ -28,26 +28,48 @@
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Thêm mới menu</h3>
+                            <h3 class="box-title">Cập nhật thông tin sản phẩm</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form">
+                        <form role="form" method="post" th:object="${product}" th:action="@{/admin/product/edit}" enctype="multipart/form-data">
                             <div class="box-body">
+                                <input type="hidden" class="form-control" id="name"
+                                    th:field="*{id}">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên Menu</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Giới thiệu">
+                                    <label for="name">Tên sản phẩm</label>
+                                    <input type="text" class="form-control" id="name"
+                                    th:field="*{productName}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Chọn Menu Cha</label>
-                                    <select name="" id="input" class="form-control" required="required">
-                                        <option value="">Chọn danh Menu cha</option>
-                                        <option value="">Học bổng</option>
+                                    <label for="name">Mô tả</label>
+                                    <textarea class="form-control" id="name" th:field="*{description}"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Hình ảnh</label>
+                                    <input type="file" class="form-control" id="name"
+                                        name="fileImage">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Giá</label>
+                                    <input type="number" class="form-control" id="name"
+                                        th:field="*{price}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Số lượng</label>
+                                    <input type="number" class="form-control" id="name"
+                                        th:field="*{quantity}">
+                                </div>
+                                
+                                <div class="form-group" data-select2-id="13">
+                                    <label>Minimal</label>
+                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" th:field="*{category.id}">
+                                      <option th:each="category : ${category}" th:value="${category.id}" th:text="${category.categoryName}"></option>
+                                      
                                     </select>
-                                </div>
+                                  </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="exampleInputEmail1">Chọn Vị trí</label>
                                     <select name="" id="input" class="form-control" required="required">
                                         <option value="">Chọn vị trí</option>
@@ -68,12 +90,13 @@
                                             Ẩn
                                         </label>
                                     </div>
-                                </div>
+                                </div> --> 
 
                             </div>
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Thêm mới</button>
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                <a href="/admin/product" class="btn btn-default">Thoát</a>
                             </div>
                         </form>
                     </div>

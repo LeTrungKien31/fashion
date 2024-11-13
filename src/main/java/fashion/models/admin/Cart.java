@@ -12,6 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 
 @Entity
 public class Cart {
@@ -35,7 +37,16 @@ public class Cart {
     public Cart(){
 
     }
+    @PrePersist
+    protected void onCreate() {
+        createdAt = Instant.now();
+    }
 
+    // Cập nhật ngày hiện tại khi sửa bản ghi
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = Instant.now();
+    }
     public Cart(int id, int totalAmount, double totalPrice, Instant createdAt, String createdBy, Instant updatedAt,
             String updatedBy, User user, Set<CartDetails> cartDetails) {
         this.id = id;

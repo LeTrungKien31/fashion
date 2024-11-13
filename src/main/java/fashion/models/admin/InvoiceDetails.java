@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 
 @Entity
 public class InvoiceDetails {
@@ -33,7 +35,16 @@ public class InvoiceDetails {
     public InvoiceDetails(){
 
     }
+    @PrePersist
+    protected void onCreate() {
+        createdAt = Instant.now();
+    }
 
+    // Cập nhật ngày hiện tại khi sửa bản ghi
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = Instant.now();
+    }
     public InvoiceDetails(int id, double price, int quantity, double totalPrice, Instant createdAt, String createdBy,
             Instant updatedAt, String updatedBy, Invoice invoice, Product product) {
         this.id = id;

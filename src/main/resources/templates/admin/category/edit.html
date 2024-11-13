@@ -28,18 +28,20 @@
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Thêm mới loại sản phẩm</h3>
+                            <h3 class="box-title">Cập nhật thông tin loại hàng</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" method="post" th:object="${category}" th:action="@{/admin/category/add-category}">
+                        <form role="form" method="post" th:object="${category}" th:action="@{/admin/category/edit}">
+                            <input type="hidden" class="form-control" id="name"
+                                        th:field="*{id}">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="name">Tên loại hàng</label>
                                     <input type="text" class="form-control" id="name"
                                         th:field="*{categoryName}">
                                 </div>
-                                
+
                                 <!-- <div class="form-group">
                                     <label for="exampleInputEmail1">Chọn Menu Cha</label>
                                     <select name="" id="input" class="form-control" required="required">
@@ -74,7 +76,7 @@
                             </div>
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Thêm mới</button>
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
                             </div>
                         </form>
                     </div>

@@ -10,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 
 @Entity
 public class Category {
@@ -27,6 +29,17 @@ public class Category {
     public Category(){
 
     }
+    @PrePersist
+    protected void onCreate() {
+        createdAt = Instant.now();
+    }
+
+    // Cập nhật ngày hiện tại khi sửa bản ghi
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = Instant.now();
+    }
+
     public Category(int id, String categoryName, Instant createdAt, String createdBy, Instant updatedAt,
             String updatedBy, Set<Product> product) {
         this.id = id;

@@ -15,7 +15,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Chào mừng đến trang quản lý nhà sản xuất
+                Chào mừng đến trang quản lý chi tiết nhập kho
 
             </h1>
 
@@ -26,7 +26,7 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <a href="supplier/add-supplier" class="btn btn-success">+Thêm mới</a>
+                        <a href="receiptdetails/add" class="btn btn-success">+Thêm mới</a>
 
                         <div class="box-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -42,30 +42,30 @@
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tbody><tr>
-                                <th>id</th>
-                                <th>Tên nhà cung cấp</th>
-                                <th>Địa chỉ</th>
-                                <th>Số điện thoại</th>
-                                <th>Email</th>
+                                <th>Id</th>
+                                <th>Phiếu nhập kho</th>
+                                <th>Sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
                                 <th>ngày tạo</th>
                                 <th>Người tạo</th>
                                 <th>Ngày sửa</th>
                                 <th>Người sửa</th>
                                 <th>Tùy chọn</th>
                             </tr>
-                            <tr th:each = "supplier : ${list}">
-                                <td th:text="${supplier.id}"></td>
-                                <td th:text="${supplier.supplierName}"></td>
-                                <td th:text="${supplier.address}"></td>
-                                <td th:text="${supplier.phoneNumber}"></td>
-                                <td th:text="${supplier.email}"></td>
-                                <td th:text="${supplier.createdAt}"></td>
-                                <td th:text="${supplier.createdBy}"></td>
-                                <td th:text="${supplier.updatedAt}"></td>
-                                <td th:text="${supplier.updatedBy}"></td>
+                            <tr th:each = "receiptDetails : ${list}">
+                                <td th:text="${receiptDetails.id}"></td>
+                                <td th:text="${receiptDetails.warehouseReceipt.id}"></td>
+                                <td th:text="${receiptDetails.product.productName}"></td>
+                                <td th:text="${receiptDetails.quantity}"></td>
+                                <td th:text="${receiptDetails.price}"></td>
+                                <td th:text="${receiptDetails.createdAt}"></td>
+                                <td th:text="${receiptDetails.createdBy}"></td>
+                                <td th:text="${receiptDetails.updatedAt}"></td>
+                                <td th:text="${receiptDetails.updatedBy}"></td>
                                 <td>
-                                    <a th:href="@{/admin/supplier/edit/{id}(id = ${supplier.id})}" class="btn btn-success">Sửa</a>
-                                    <a th:href="@{/admin/supplier/delete/{id}(id = ${supplier.id})}" class="btn btn-danger">Xóa</a>
+                                    <a th:href="@{/admin/receiptdetails/edit/{id}(id = ${receiptDetails.id})}" class="btn btn-success">Sửa</a>
+                                    <a th:href="@{/admin/receiptdetails/delete/{id}(id = ${receiptDetails.id})}" class="btn btn-danger">Xóa</a>
 
                                 </td>
                             </tr>

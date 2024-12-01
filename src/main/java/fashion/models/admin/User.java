@@ -1,31 +1,58 @@
 package fashion.models.admin;
 
+import java.util.Date;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
-@Entity
+@Entity(name = "Account")
 public class User {
-    @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private String userName;
-	private String password;
-	private Boolean enabled;
-	private Boolean gender;
-	private String address;
-	private String email;
-	private String telephone;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<UserRole> userRole;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id")
+    private int id;
+
+    @Column(name = "TenDangNhap", unique = true, nullable = false)
+    private String tenDangNhap;
+
+    @Column(name = "MatKhau", nullable = false)
+    private String matKhau;
+
+    @Column(name = "KichHoat", nullable = true)
+    private Boolean kichHoat;
+
+    @Column(name = "HoTen", nullable = true)
+    private String hoTen;
+
+    @Column(name = "GioiTinh", nullable = true)
+    private String gioiTinh;
+
+    @Column(name = "NgaySinh", nullable = true)
+    @Temporal(TemporalType.DATE)
+    private Date ngaySinh;
+
+    @Column(name = "DiaChi", nullable = true)
+    private String diaChi;
+
+    @Column(name = "Email", nullable = true)
+    private String email;
+
+    @Column(name = "SoDienThoai", nullable = true)
+    private String soDienThoai;
+
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Invoice> invoice;
@@ -33,76 +60,127 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
 
-    
-    public User() {
+    @ManyToOne
+    @JoinColumn(name = "RoleId", referencedColumnName = "Id", nullable = false)
+    private Role role;
 
-    }
-    public User(int id, String userName, String password, Boolean enabled, Boolean gender, String address,
-            String email, String telephone, Set<UserRole> userRoles) {
-        this.id = id;
-        this.userName = userName;
-        this.password = password;
-        this.enabled = enabled;
-        this.gender = gender;
-        this.address = address;
-        this.email = email;
-        this.telephone = telephone;
-        this.userRole = userRoles;
-    }
+    @Column(name = "Avatar", nullable = true)
+    private String avatar;  // Trường mới thêm vào
+
+    // Getters và Setters
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
-    public String getUserName() {
-        return userName;
+
+    public String getTenDangNhap() {
+        return tenDangNhap;
     }
-    public void setUserName(String userName) {
-        this.userName = userName;
+
+    public void setTenDangNhap(String tenDangNhap) {
+        this.tenDangNhap = tenDangNhap;
     }
-    public String getPassword() {
-        return password;
+
+    public String getMatKhau() {
+        return matKhau;
     }
-    public void setPassword(String password) {
-        this.password = password;
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
-    public Boolean getEnabled() {
-        return enabled;
+
+    public Boolean getKichHoat() {
+        return kichHoat;
     }
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+
+    public void setKichHoat(Boolean kichHoat) {
+        this.kichHoat = kichHoat;
     }
-    public Boolean getGender() {
-        return gender;
+
+    public String getHoTen() {
+        return hoTen;
     }
-    public void setGender(Boolean gender) {
-        this.gender = gender;
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
     }
-    public String getAddress() {
-        return address;
+
+    public String getGioiTinh() {
+        return gioiTinh;
     }
-    public void setAddress(String address) {
-        this.address = address;
+
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
+
+    public Date getNgaySinh() {
+        return ngaySinh;
+    }
+
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getTelephone() {
-        return telephone;
+
+    public String getSoDienThoai() {
+        return soDienThoai;
     }
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
     }
-    public Set<UserRole> getUserRoles() {
-        return userRole;
+
+    public Role getRole() {
+        return role;
     }
-    public void setUserRoles(Set<UserRole> userRoles) {
-        this.userRole = userRoles;
+
+    public void setRole(Role role) {
+        this.role = role;
     }
     
-	
+
+    public Set<Invoice> getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Set<Invoice> invoice) {
+        this.invoice = invoice;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 }
+
+    
+

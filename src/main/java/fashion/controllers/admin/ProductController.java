@@ -26,9 +26,33 @@ public class ProductController {
     private StorageService storageService;
     @Autowired
     private ProductService productService;
+    // @Autowired
+    // private fashion.service.user.ProductService productService2;
 
     @Autowired
     private CategoryService categoryService;
+
+    @GetMapping("/product")
+    public String getAllProducts(Model model) {
+        List<Product> products = productService.getAll();
+        model.addAttribute("products", products);
+        return "/product"; 
+    }
+    
+    // @GetMapping("/search")
+    // public String searchProducts(@RequestParam(value = "q", required = false) String keyword, Model model) {
+    //     List<Product> products;
+        
+    //     if (keyword != null && !keyword.isEmpty()) {
+    //         products = productService2.searchProductsByName(keyword);
+    //     } else {
+    //         products = productService2.getAllProducts(); // Trả về toàn bộ sản phẩm nếu không có từ khóa
+    //     }
+
+    //     model.addAttribute("products", products);
+    //     model.addAttribute("keyword", keyword); // Truyền từ khóa tìm kiếm để hiển thị lại
+    //     return "/product/ao"; // Tên của view hiển thị kết quả tìm kiếm
+    // }
 
     @GetMapping("")
     public String index(Model model) {
@@ -93,4 +117,4 @@ public class ProductController {
 }
 
 
-
+    

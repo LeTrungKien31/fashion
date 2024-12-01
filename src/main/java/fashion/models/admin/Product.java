@@ -15,16 +15,21 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "Product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(columnDefinition = "MEDIUMTEXT")
+    // câu lệnh dùng cho my sql à v thôi đợi tí
+    // @Column(columnDefinition = "MEDIUMTEXT") 
+    @Column(columnDefinition = "NVARCHAR(2000)")
     private String description;
     private String imageUrl;
-    private String productName;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String productName; 
     private double price;
     private int quantity;
     private Instant createdAt;
@@ -189,5 +194,6 @@ public class Product {
     public void setCartDetails(Set<CartDetails> cartDetails) {
         this.cartDetails = cartDetails;
     }
+
     
 }

@@ -1,0 +1,32 @@
+/* Kiểu dáng mặc định */
+.sf-with-ul1 {
+    color: #fff; /* Màu chữ mặc định */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    padding: 10px 15px; /* Khoảng cách bên trong */
+    display: inline-block; /* Đặt thành dạng khối nội tuyến */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+
+/* Hiệu ứng khi hover */
+.sf-with-ul1:hover {
+    color: #ffd700; /* Thay đổi màu chữ khi hover (vàng nhạt) */
+    background-color: #333; /* Thay đổi màu nền */
+    text-decoration: underline; /* Gạch chân khi hover */
+    cursor: pointer; /* Con trỏ chuột */
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none; /* Ẩn mặc định */
+    position: absolute; /* Hiển thị ở vị trí tương đối */
+    background-color: #333; /* Màu nền menu */
+    padding: 10px 0; /* Khoảng cách giữa các item */
+    border-radius: 5px; /* Bo góc */
+    z-index: 1000; /* Ưu tiên hiển thị */
+}
+
+/* Hiển thị menu khi hover */
+.sf-with-ul1:hover + .dropdown-menu,
+.dropdown-menu:hover {
+    display: block; /* Hiển thị menu khi hover */
+}

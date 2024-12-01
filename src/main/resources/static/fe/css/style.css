@@ -212,6 +212,7 @@ a:focus {
 .link-underline {
   box-shadow: 0 1px 0 0 #cc9966; }
 
+
 .text-primary {
   color: #cc9966 !important; }
 
@@ -1111,6 +1112,9 @@ blockquote {
   height: 0;
   padding: 0 !important;
   overflow: hidden; }
+  .text-slide {
+    color: #fff;
+  }
 
 .header-intro-clearance .header-middle .header-left,
 .header-intro-clearance .header-bottom .header-left {
@@ -7605,6 +7609,41 @@ a:focus {
   display: block;
   width: 100%;
   height: auto; }
+  
+.product-image-1 {
+    display: block;
+    width: 200px; /* Chiều rộng cố định */
+    height: 230px; /* Chiều cao cố định */
+    object-fit: cover; /* Cắt hoặc phóng to ảnh để vừa khung */
+    overflow: hidden;
+  }
+  .product-image-new {
+    display: block;
+    width: 275px; /* Chiều rộng cố định */
+    height: 375px; /* Chiều cao cố định */
+    object-fit: cover; /* Cắt hoặc phóng to ảnh để vừa khung */
+    overflow: hidden;
+  }
+  .product-image-trending{
+    display: block;
+    width: 200px; /* Chiều rộng cố định */
+    height: 325px; /* Chiều cao cố định */
+    object-fit: cover; /* Cắt hoặc phóng to ảnh để vừa khung */
+    overflow: hidden;
+  }
+  .product-image-relation{
+    display: block;
+    width: 238px; /* Chiều rộng cố định */
+    height: 290px; /* Chiều cao cố định */
+    object-fit: cover; /* Cắt hoặc phóng to ảnh để vừa khung */
+    overflow: hidden;
+  }
+  .product-image-deal {
+    display: block;
+    width: 184px;
+    height: 224px; }
+  
+
 
 .product-image-hover {
   position: absolute;
@@ -10210,7 +10249,13 @@ button:focus {
   font-size: 1.4rem;
   letter-spacing: -.01em;
   margin-bottom: .5rem; }
-
+  .intro-subtitle-slide2{
+    color: #cc3333;
+    font-weight: 300;
+    font-size: 1.4rem;
+    letter-spacing: -.01em;
+    margin-bottom: .5rem; }
+  
 .intro-title {
   color: #fff;
   font-weight: 700;
@@ -10219,6 +10264,14 @@ button:focus {
   letter-spacing: -.03em;
   margin-bottom: 1.2rem;
   text-indent: -.2rem; }
+  .intro-title-slide1 {
+    color: #e02b27;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 1.2;
+    letter-spacing: -.03em;
+    margin-bottom: 1.2rem;
+    text-indent: -.2rem; }
 
 .brand {
   display: flex;
